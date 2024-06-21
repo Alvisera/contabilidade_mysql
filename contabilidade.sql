@@ -33,6 +33,46 @@ create table endereco (
     references funcionarios (idfuncionarios)
 );
 
+create table setores (
+    idsetores int primary key auto_increment,
+    areas varchar(50)
+);
+
+insert into setores values (null,'Auditoria');
+insert into setores values (null,'Contabilidade Fiscal');
+insert into setores values (null,'Contabilidade Gerencial');
+insert into setores values (null,'Consultoria Financeira');
+insert into setores values (null,'Gestão de Riscos');
+insert into setores values (null,'Contabilidade de Custos');
+insert into setores values (null,'Serviços de Payroll');
+insert into setores values (null,'Serviços de Compliance');
+insert into setores values (null,'Serviços de Planejamento Tributário');
+insert into setores values (null,'Contabilidade de Gestão');
+insert into setores values (null,'Analista de dados');
+insert into setores values (null,'Contabilidade Forense');
+insert into setores values (null,'Tecnologia da Informação');
+insert into setores values (null,'Recursos Humanos');
+insert into setores values (null,'Marketing e Desenvolvimento de Negócios');
+
+create table setores_nomes (
+    idsetores int primary key auto_increment,
+    auditoria varchar(50),
+    contab_fiscal varchar(50),
+    contab_gerencial varchar(50),
+    consul_financeira varchar(50),
+    gestao_de_riscos varchar(50),
+    contab_de_custos varchar(50),
+    serv_de_payroll varchar(50),
+    serv_de_compliance varchar(50),
+    serv_de_planej_tribu varchar(50),
+    contab_forense varchar(50),
+    ti varchar(50),
+    rh varchar(50),
+    marketing varchar(50)
+);
+
+insert into setores_nomes (auditoria) values ('Srta. Beatriz Barros');
+
 Insert Into funcionarios (idfuncionarios, nome, sexo, email, idade, cpf) Values (1, 'Srta. Beatriz Barros', 'F', 'PedroHenrique_Barros15@gmail.com', 63, '95618829240');  
 Insert Into funcionarios (idfuncionarios, nome, sexo, email, idade, cpf) Values (2, 'Henrique Macedo', 'M', 'Elisio75@yahoo.com', 54, '05360284197');  
 Insert Into funcionarios (idfuncionarios, nome, sexo, email, idade, cpf) Values (3, 'Washington Carvalho', 'M', 'Joaquim89@gmail.com', 18, '15346615458');  
@@ -222,7 +262,7 @@ from funcionarios
     inner join endereco
     on funcionarios.idfuncionarios = endereco.id_funcionarios;
 
-select *
+select nome, numero
 from funcionarios
     inner join telefone
     on funcionarios.idfuncionarios = telefone.id_funcionarios;
