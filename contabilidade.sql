@@ -266,3 +266,61 @@ select nome, numero
 from funcionarios
     inner join telefone
     on funcionarios.idfuncionarios = telefone.id_funcionarios;
+
+
+select idfuncionarios, nome, sexo, cidade, ddd, numero
+from funcionarios f
+    inner join endereco e
+    on f.idfuncionarios = e.id_funcionarios
+    inner join telefone t 
+    on f.idfuncionarios = t.id_funcionarios
+where sexo = 'f'
+or idfuncionarios = '12' 
+or idfuncionarios = '16';
+
+select count(*), sexo
+from funcionarios
+group by sexo;
+
+select ddd, numero 
+from telefone
+where ddd like '%04%' 
+or ddd like '%70%';
+
+alter table funcionarios
+add nacionalidade varchar(20);
+
+alter table funcionarios
+drop column nacionalidade;
+
+alter table endereco
+change estado uf varchar(30) not null;
+
+alter table endereco
+change uf estado varchar(30) not null;
+
+alter table endereco
+modify estado varchar(25) not null;
+
+select nome, sexo, bairro
+from funcionarios
+    inner join endereco
+    on funcionarios.idfuncionarios = endereco.id_funcionarios
+where (bairro = 'maria luiza' and sexo = 'f')
+or (bairro = 'centro' and sexo ='f');
+
+select nome, sexo, bairro
+from funcionarios
+    inner join endereco
+    on funcionarios.idfuncionarios = endereco.id_funcionarios
+where bairro = 'maria luiza'
+or bairro ='centro';
+
+select nome, cidade, ddd, numero
+from funcionarios f
+    inner join endereco e
+    on f.idfuncionarios = e.id_funcionarios
+    inner join telefone t
+    on f.idfuncionarios = t.id_funcionarios
+where sexo = 'f';
+
